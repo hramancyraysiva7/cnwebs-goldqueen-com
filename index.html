@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>赏金女王 · 介绍页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background: #f3f4f6;
+      color: #1e293b;
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    /* hero */
+    .hero {
+      background: linear-gradient(145deg, #ffffff, #f8fafc);
+      border-radius: 32px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.02);
+      padding: 4rem 2.5rem;
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #a855f7, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 1.125rem;
+      color: #475569;
+      max-width: 640px;
+      margin: 1rem auto 0;
+    }
+
+    /* 卡片通用 */
+    .card {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03), 0 0 0 1px #e9edf1;
+      padding: 2rem 2rem 2.25rem;
+      transition: box-shadow 0.2s ease;
+    }
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.05), 0 0 0 1px #dce1e8;
+    }
+
+    /* 两列 / 三列布局 */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 760px) {
+      .grid-2, .grid-3 {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        padding: 2.5rem 1.25rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+    }
+
+    /* 区域标题 */
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title small {
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: #64748b;
+      margin-left: 0.25rem;
+    }
+
+    /* 特点卡片内 */
+    .feature-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #0f172a;
+    }
+    .card p {
+      color: #334155;
+    }
+    .card ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .card ul li {
+      padding: 0.25rem 0;
+      padding-left: 1.3rem;
+      position: relative;
+      color: #1e293b;
+    }
+    .card ul li::before {
+      content: "·";
+      position: absolute;
+      left: 0.25rem;
+      color: #7c3aed;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    /* 说明区 */
+    .explain {
+      background: #ffffff;
+      border-radius: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03), 0 0 0 1px #e9edf1;
+      padding: 2rem 2.25rem;
+      margin-bottom: 2.5rem;
+    }
+    .explain p {
+      margin-bottom: 1rem;
+      color: #1e293b;
+    }
+    .explain a {
+      color: #6d28d9;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px dotted #a78bfa;
+    }
+    .explain a:hover {
+      color: #4f46e5;
+      border-bottom-style: solid;
+    }
+
+    /* FAQ摘要 */
+    .faq-item {
+      border-bottom: 1px solid #e6eaef;
+      padding: 1rem 0;
+    }
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+    .faq-q {
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 0.25rem;
+      font-size: 1rem;
+    }
+    .faq-a {
+      color: #475569;
+      font-size: 0.95rem;
+    }
+
+    /* 底部 */
+    .footer-note {
+      text-align: center;
+      padding: 2rem 0 0.5rem;
+      color: #64748b;
+      font-size: 0.9rem;
+      border-top: 1px solid #e2e8f0;
+      margin-top: 1rem;
+    }
+    .footer-note a {
+      color: #475569;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer-note a:hover {
+      color: #1e293b;
+      text-decoration: underline;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 区 -->
+  <div class="hero">
+    <h1>关于 <span>赏金女王</span> · 站点介绍</h1>
+    <p>一个专注分享信息与资源的个人网站，围绕“赏金女王”主题搭建，内容自然、界面清晰，力求让来访者舒适地了解这个领域。</p>
+  </div>
+
+  <!-- 优势区：为什么值得了解 -->
+  <div class="section-title">✨ 站点特色 <small>简洁 · 透明 · 有据</small></div>
+  <div class="grid-3">
+    <div class="card">
+      <div class="feature-icon">📋</div>
+      <h3>信息组织清晰</h3>
+      <p>每部分内容都经过梳理，分类明确，便于快速找到感兴趣的部分。没有杂乱广告，只有干净的页面结构。</p>
+    </div>
+    <div class="card">
+      <div class="feature-icon">🧩</div>
+      <h3>内容持续更新</h3>
+      <p>围绕“赏金女王”相关动态与常见疑问，站点会不定期补充和修订内容，保持信息的新鲜度。</p>
+    </div>
+    <div class="card">
+      <div class="feature-icon">🛡️</div>
+      <h3>注重可信度</h3>
+      <p>所有介绍内容基于可查证的信息编写，不虚构、不夸大，力求给访问者提供真实、可靠的参考。</p>
+    </div>
+  </div>
+
+  <!-- 说明区：站点定位与可信说明 -->
+  <div class="explain">
+    <div class="section-title">📖 关于这个站点</div>
+    <p>这里是一个独立介绍性质的页面，主要帮助对“赏金女王”感兴趣的朋友快速了解相关概念、常见问题以及一些使用场景。网站本身非官方平台，而是从爱好者或分享者的角度组织信息。</p>
+    <p>如果你希望直接访问主题网站，可以通过链接 <a href="https://cnwebs-goldqueen.com">赏金女王</a> 前往。该链接指向站点首页，页面内容公开可见。</p>
+    <p>在浏览过程中，若发现信息有疑问或需要进一步核实，建议结合多个来源进行判断。所有描述均基于当前页面编写时的认知，不构成任何形式的承诺或保证。</p>
+  </div>
+
+  <!-- FAQ 摘要 -->
+  <div class="section-title">❓ 常见疑问摘要</div>
+  <div class="card" style="padding: 1.25rem 2rem 1.5rem;">
+    <div class="faq-item">
+      <div class="faq-q">“赏金女王”指的是什么？</div>
+      <div class="faq-a">通常是指一个以“赏金女王”命名的线上内容或服务主题，具体内容可参考站内介绍。不同语境下可能有不同含义，建议以实际页面说明为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">这个网站是官方的吗？</div>
+      <div class="faq-a">不是。本页为独立介绍页，目的是提供更清晰的引导和背景说明。站点链接指向的网站为 <a href="https://cnwebs-goldqueen.com">赏金女王</a>，其性质请以该网站自身说明为准。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">信息准确吗？会持续维护吗？</div>
+      <div class="faq-a">页面内容会定期审视和修正，但无法保证完全无误或适用于所有情况。建议将本页作为入门参考，关键决策前请自行核实。</div>
+    </div>
+  </div>
+
+  <!-- 底部链接 -->
+  <div class="footer-note">
+    <div class="footer-links">
+      <a href="https://cnwebs-goldqueen.com">赏金女王</a>
+    </div>
+    <p style="margin-top: 0.25rem;">© 介绍页 · 仅供信息展示 · 内容保持客观与克制</p>
+  </div>
+
+</div>
+</body>
+</html>

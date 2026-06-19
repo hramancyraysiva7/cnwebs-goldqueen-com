@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://hramancyraysiva7.github.io/cnwebs-goldqueen-com/sitemap.xml
